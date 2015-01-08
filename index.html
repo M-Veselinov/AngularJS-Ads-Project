@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="Ads">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Ads project</title>
+    <link rel="stylesheet" href="styles/paper.bootstrap.css">
+    <script src="lib/angular.js"></script>
+</head>
+<header>
+    <div class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#" class="text-center">Home</a></li>
+            <li><a href="#" class="text-center">Register</a></li>
+            <li><a href="#" class="text-center">Login</a></li>
+        </ul>
+    </div>
+</header>
+<body>
+    <div class="col-md-10" class="container-fluid" ng-controller="AdsController">
+        <ul>
+            <li ng-repeat="ad in data.ads">
+                <div>{{ad.title}}</div>
+
+            </li>
+        </ul>
+    </div>
+    <aside class="col-md-2">
+        <h4 class="text-center">Categories</h4>
+        <ul class="nav nav-pills nav-stacked" ng-controller="CategoriesController">
+            <li><a href="#" class="text-center">All</a></li>
+            <li><a href="#" class="text-center" ng-repeat="category in categories">{{category.name}}</a></li>
+        </ul>
+        <ul class="nav nav-pills nav-stacked">
+
+        </ul>
+    </aside>
+<script src="scripts/app.js"></script>
+<script src="scripts/services/ads-categories.js"></script>
+<script src="scripts/controllers/categories-controller.js"></script>
+<script src="scripts/services/ads-data.js"></script>
+<script src="scripts/controllers/ads-controller.js"></script>
+</body>
+</html>
