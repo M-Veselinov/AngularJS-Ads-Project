@@ -9,5 +9,5 @@ app.controller('CategoriesController', function ($scope, adsCategories) {
        function (data, status,headers,config) {
            console.log('error occured');
        }
-   )
+   );
 });

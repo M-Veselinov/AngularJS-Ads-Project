@@ -1,0 +1,50 @@
+<div class="col-md-12" class="container-fluid">
+    <form class="form-horizontal">
+        <div class="col-md-12">
+        <fieldset>
+            <legend>User Registration</legend>
+            <div class="form-group">
+                <label for="username" class="col-lg-2 control-label" >Username: </label>
+                <div class="col-lg-4">
+                    <input class="form-control" id="username" placeholder="Username" type="text">
+                </div>
+
+                <label for="password" class="col-lg-2 control-label" >Password: </label>
+                <div class="col-lg-4">
+                    <input class="form-control" id="password" placeholder="Password" type="text">
+                </div>
+
+                <label for="confirm-password" class="col-lg-2 control-label" >Confirm Password: </label>
+                <div class="col-lg-4">
+                    <input class="form-control" id="confirm-password" placeholder="Confirm Password" type="text">
+                </div>
+
+                <label for="name" class="col-lg-2 control-label" >Name: </label>
+                <div class="col-lg-4">
+                    <input class="form-control" id="name" placeholder="Name" type="text">
+                </div>
+
+                <label for="email" class="col-lg-2 control-label" >Email: </label>
+                <div class="col-lg-4">
+                    <input class="form-control" id="email" placeholder="Email" type="text">
+                </div>
+
+                <label for="phone" class="col-lg-2 control-label" >Phone: </label>
+                <div class="col-lg-4">
+                    <input class="form-control" id="phone" placeholder="Phone" type="text">
+                </div>
+                <div class="col-md-3">
+                <label for="select-town" class="col-lg-9 control-label">Select Town: </label>
+                <select class="form-control" id="select-town">
+                    <option ng-repeat="town in towns">{{town.name}}</option>
+                </select>
+                </div>
+                <div class="col-lg-10 col-lg-offset-2">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </fieldset>
+        </div>
+    </form>
+</div>

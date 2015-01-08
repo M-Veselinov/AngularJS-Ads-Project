@@ -1,0 +1,52 @@
+<div class="col-md-10" class="container-fluid" ng-controller="AdsController">
+    <div ng-repeat="ad in data.ads" class="panel panel-default">
+        <div class="panel-heading">
+            <h5>{{ad.title}}</h5>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-2">
+                <img ng-src="{{ad.imageDataUrl}}">
+            </div>
+            <div class="col-md-10">
+                <span>Name: </span><span class="text-primary">{{ad.ownerName}}</span>
+                <span>Email: </span><span class="text-primary">{{ad.ownerEmail}}</span>
+                <span>Phone: </span><span class="text-primary">{{ad.ownerPhone}}</span>
+            </div>
+            <br>
+            <div class="col-md-10">
+                <p class="lead">{{ad.text}}</p>
+            </div>
+            <div class="blockquote-reverse">
+                {{ad.date | date: 'dd-MMM-yyyy'}}
+            </div>
+        </div>
+    </div>
+</div>
+<aside class="col-md-2">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4 class="text-center">Categories</h4>
+        </div>
+        <div class="panel-body" ng-controller="CategoriesController">
+            <select class="form-control">
+                <option>All</option>
+                <option ng-repeat="category in categories" ng-v>{{category.name}}</option>
+            </select>
+            <br>
+            <a href="#" class="btn btn-primary">Filter</a>
+        </div>
+    </div>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4 class="text-center">Towns</h4>
+        </div>
+        <div class="panel-body">
+            <select class="form-control" ng-controller="TownsController">
+                <option>All</option>
+                <option ng-repeat="town in towns">{{town.name}}</option>
+            </select>
+            <br>
+            <a href="#" class="btn btn-primary">Filter</a>
+        </div>
+    </div>
+</aside>
