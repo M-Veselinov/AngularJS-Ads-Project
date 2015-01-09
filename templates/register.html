@@ -1,37 +1,37 @@
 <div class="col-md-12" class="container-fluid">
-    <form class="form-horizontal">
+    <form class="form-horizontal" ng-controller="UserController as userCtrl">
         <div class="col-md-12">
         <fieldset>
             <legend>User Registration</legend>
             <div class="form-group">
                 <label for="username" class="col-lg-2 control-label" >Username: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="username" placeholder="Username" type="text">
+                    <input class="form-control" id="username" placeholder="Username" type="text" ng-model="userCtrl.user.username">
                 </div>
 
                 <label for="password" class="col-lg-2 control-label" >Password: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="password" placeholder="Password" type="text">
+                    <input class="form-control" id="password" placeholder="Password" type="text" ng-model="userCtrl.user.password">
                 </div>
 
                 <label for="confirm-password" class="col-lg-2 control-label" >Confirm Password: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="confirm-password" placeholder="Confirm Password" type="text">
+                    <input class="form-control" id="confirm-password" placeholder="Confirm Password" type="text" ng-model="userCtrl.user.confirmPassword">
                 </div>
 
                 <label for="name" class="col-lg-2 control-label" >Name: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="name" placeholder="Name" type="text">
+                    <input class="form-control" id="name" placeholder="Name" type="text" ng-model="userCtrl.user.name">
                 </div>
 
                 <label for="email" class="col-lg-2 control-label" >Email: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="email" placeholder="Email" type="text">
+                    <input class="form-control" id="email" placeholder="Email" type="text" ng-model="userCtrl.user.email">
                 </div>
 
                 <label for="phone" class="col-lg-2 control-label" >Phone: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="phone" placeholder="Phone" type="text">
+                    <input class="form-control" id="phone" placeholder="Phone" type="text" ng-model="userCtrl.user.phone">
                 </div>
                 <div class="col-md-3">
                 <label for="select-town" class="col-lg-9 control-label">Select Town: </label>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-lg-10 col-lg-offset-2">
                     <br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" ng-click="registerUser(userCtrl.user)">Submit</button>
                 </div>
             </div>
         </fieldset>

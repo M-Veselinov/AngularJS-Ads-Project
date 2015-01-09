@@ -1,24 +1,27 @@
 <div class="col-md-12" class="container-fluid">
-    <form class="form-horizontal">
+    <form class="form-horizontal" ng-controller="UserController as userCtrl">
         <div class="col-md-12">
             <fieldset>
                 <legend>User Login</legend>
                 <div class="form-group">
                     <label for="loginUsername" class="col-lg-2 control-label" >Username: </label>
                     <div class="col-lg-4">
-                        <input class="form-control" id="loginUsername" placeholder="Username" type="text">
+                        <input class="form-control" id="loginUsername" placeholder="Username" type="text" ng-model="userCtrl.userLoginData.username">
                     </div>
 
                     <label for="loginPassword" class="col-lg-2 control-label" >Password: </label>
                     <div class="col-lg-4">
-                        <input class="form-control" id="loginPassword" placeholder="Password" type="text">
+                        <input class="form-control" id="loginPassword" placeholder="Password" type="text" ng-model="userCtrl.userLoginData.password">
                     </div>
                     <div class="col-lg-10 col-lg-offset-2">
                         <br>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" ng-click="loginUser(userCtrl.userLoginData)">Submit</button>
                     </div>
                 </div>
             </fieldset>
         </div>
     </form>
 </div>
+
+        <!-- name: Mario23
+            pass: 123->
