@@ -32,10 +32,52 @@ app.controller('AdsController', function AdsController($scope, adsData) {
                 console.log(status, error); // Try with invalid url
             });
 
-    this.status = '';
-
-    this.setStatus = function (status) {
-        this.status = status;
+    $scope.getSAds = function (status) {
+        var accessToken = sessionStorage.getItem('accessToken');
+        adsData.getSortedAds(accessToken, status,
+            function (data, status, headers, config) {
+                $scope.userSortedData = data;
+                requestSuccessfull('SDSDSD');
+            },
+            function (error, status, headers, config) {
+                console.log(status, error); // Try with invalid url
+            });
     };
+
+    $scope.deactivateUserAd = function (id) {
+        var accessToken = sessionStorage.getItem('accessToken');
+
+        adsData.deactivateAd(id, accessToken,
+            function (data, status, headers, config) {
+                requestSuccessfull(data.message);
+            },
+            function (error,status, headers, config) {
+                console.log(status,error);
+            });
+    };
+
+    $scope.publishAdAgain = function (id) {
+        var accessToken = sessionStorage.getItem('accessToken');
+
+        adsData.publishAgain(id, accessToken,
+            function (data, status, headers, config) {
+                requestSuccessfull(data.message);
+            },
+            function (error,status, headers, config) {
+                console.log(status,error);
+            });
+    };
+
+    $scope.deleteUserAd = function (id) {
+        var accessToken = sessionStorage.getItem('accessToken');
+
+        adsData.deleteAd(id, accessToken,
+            function (data, status, headers, config) {
+                requestSuccessfull(data.message);
+            },
+            function (error,status, headers, config) {
+                console.log(status,error);
+            });
+    }
 
 });

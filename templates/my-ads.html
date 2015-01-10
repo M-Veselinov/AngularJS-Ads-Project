@@ -16,12 +16,12 @@
         <div class="panel-heading">
             <h3 class="text-center">My Ads</h3>
         </div>
-        <div class="panel-body" ng-controller="AdsController as ctrl">
+        <div class="panel-body" ng-controller="AdsController">
             <ul class="nav nav-pills nav-stacked">
-                <li><a href="#/my-ads" class="text-center" ng-click="ctrl.setStatus('')">All</a></li>
-                <li><a href="#/my-ads" class="text-center" ng-click="ctrl.setStatus('Published')">Published</a></li>
-                <li><a href="#/my-ads" class="text-center" ng-click="ctrl.setStatus('WaitingApproval')">Waiting Approval</a></li>
-                <li><a href="#/my-ads" class="text-center" ng-click="ctrl.setStatus('Inactive')">Inactive</a></li>
+                <li><a href="#/user-sorted-ads" class="text-center" ng-click="getSAds('')">All</a></li>
+                <li><a href="#/user-sorted-ads" class="text-center" ng-click="getSAds('Published')">Published</a></li>
+                <li><a href="#/user-sorted-ads" class="text-center" ng-click="getSAds('WaitingApproval')">Waiting Approval</a></li>
+                <li><a href="#/user-sorted-ads" class="text-center" ng-click="getSAds('Inactive')">Inactive</a></li>
             </ul>
         </div>
     </div>
@@ -29,55 +29,41 @@
         <a href="#/home" class="btn btn-primary" ng-click="ctrl.logoutUser()">Logout</a>
     </div>
 </aside>
-<div class="col-md-8" class="container-fluid" ng-controller="AdsController">
-    <div ng-repeat="ad in userData.ads" class="panel panel-default">
+<div class="col-md-10" class="container-fluid" ng-controller="AdsController">
+    <div ng-repeat="ad in userData.ads">
+        <div class="panel panel-primary">
         <div class="panel-heading">
             <h5>{{ad.title}}</h5>
         </div>
         <div class="panel-body">
+            <div class="col-md-9">
+                <span>Status: </span><span class="text-primary">{{ad.status}}</span>
+                <span>Category: </span><span class="text-primary">{{ad.categoryName}}</span>
+                <span>Town: </span><span class="text-primary">{{ad.townName}}</span>
+            </div>
             <!--<div class="col-md-3">
                 <img ng-src="{{ad.imageDataUrl}}">
             </div>
-            <div class="col-md-9">
-                <span>Name: </span><span class="text-primary">{{ad.ownerName}}</span>
-                <span>Email: </span><span class="text-primary">{{ad.ownerEmail}}</span>
-                <span>Phone: </span><span class="text-primary">{{ad.ownerPhone}}</span>
+
+
             </div>-->
             <br>
             <div class="col-md-9">
                 <p class="lead">{{ad.text}}</p>
             </div>
-            <div class="blockquote-reverse">
-                {{ad.date | date: 'dd-MMM-yyyy'}}
+            <div class="col-md-3">
+                <div>
+                    <span class="text-center">{{ad.date | date: 'dd-MMM-yyyy'}}</span>
+                </div>
+                <div class="col-md-12">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li ng-show="ad.status == 'Published' || ad.status == 'WaitingApproval'"><a href="#/user-home" class="text-center" ng-click="deactivateUserAd(ad.id)">Deactivate</a></li>
+                        <li ng-show="ad.status == 'Inactive'"><a href="#/user-home" class="text-center" ng-click="publishAdAgain(ad.id)">Publish Again</a></li>
+                        <li ng-show="ad.status == 'Inactive'"><a href="#/user-home" class="text-center" ng-click="deleteUserAd(ad.id)">Delete</a></li>
+                        <li ng-show="ad.status == 'Inactive'"><a href="#/edit-ad" class="text-center" ng-click="deleteUserAd(ad.id)">Edit</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<aside class="col-md-2">
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            <h4 class="text-center">Categories</h4>
-        </div>
-        <div class="panel-body" ng-controller="CategoriesController">
-            <select class="form-control">
-                <option>All</option>
-                <option ng-repeat="category in categories">{{category.name}}</option>
-            </select>
-            <br>
-            <a href="#" class="btn btn-primary">Filter</a>
-        </div>
-    </div>
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            <h4 class="text-center">Towns</h4>
-        </div>
-        <div class="panel-body">
-            <select class="form-control" ng-controller="TownsController">
-                <option>All</option>
-                <option ng-repeat="town in towns">{{town.name}}</option>
-            </select>
-            <br>
-            <a href="#" class="btn btn-primary">Filter</a>
-        </div>
-    </div>
-</aside>

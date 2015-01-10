@@ -25,4 +25,7 @@ var app = angular.module('Ads', ['ngRoute'])
         $routeProvider.when('/my-ads', {
             templateUrl: 'templates/my-ads.html'
         });
+        $routeProvider.when('/edit-ad', {
+            templateUrl: 'templates/edit-ad.html'
+        });
     });

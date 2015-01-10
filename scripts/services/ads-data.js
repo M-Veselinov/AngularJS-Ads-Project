@@ -48,12 +48,82 @@ app.factory('adsData', function adsData($http) {
             })
     }
 
+    function getAdsByStatus(accessToken, adStatus, success, error) {
+        var url = 'http://softuni-ads.azurewebsites.net/api/user/ads';
+        if (adStatus != '') {
+            url += '?status=' + adStatus;
+        }
+        $http({
+            method: 'GET',
+            url: url,
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            }
+        })
+            .success(function (data, status, headers, config) {
+                success(data, status, headers(), config);
+            })
+            .error(function (data, status, headers, config) {
+                error(data, status, headers(), config);
+            })
+    }
 
+    function deactivateUserAd(id, accessToken, success, error) {
+        $http({
+            method: 'PUT',
+            url: 'http://softuni-ads.azurewebsites.net/api/user/ads/deactivate/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            }
+        })
+            .success(function (data, status, headers, config) {
+                success(data, status, headers(), config);
+            })
+            .error(function (data, status, headers, config) {
+                error(data, status, headers(), config);
+            })
+    }
+
+    function publishAdAgain (id,accessToken, success, error) {
+        $http({
+            method: 'PUT',
+            url: 'http://softuni-ads.azurewebsites.net/api/user/ads/publishagain/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            }
+        })
+            .success(function (data, status, headers, config) {
+                success(data, status, headers(), config);
+            })
+            .error(function (data, status, headers, config) {
+                error(data, status, headers(), config);
+            })
+    }
+
+    function deleteUserAd (id, accessToken, success, error) {
+        $http({
+            method: 'DELETE',
+            url: 'http://softuni-ads.azurewebsites.net/api/user/ads/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            }
+        })
+            .success(function (data, status, headers, config) {
+                success(data, status, headers(), config);
+            })
+            .error(function (data, status, headers, config) {
+                error(data, status, headers(), config);
+            })
+    }
 
     return {
         getAds: getAllAds,
         createAd: createNewAd,
-        getUserAds: userAds
+        getUserAds: userAds,
+        getSortedAds: getAdsByStatus,
+        deactivateAd: deactivateUserAd,
+        publishAgain: publishAdAgain,
+        deleteAd: deleteUserAd
     }
 
 });
