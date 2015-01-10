@@ -11,16 +11,13 @@
     <script src="lib/jquery.noty.packaged.min.js"></script>
 </head>
 <header>
-    <div class="navbar navbar-inverse">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#/home" class="text-center">Home</a></li>
-            <li><a href="#/register" class="text-center">Register</a></li>
-            <li><a href="#/login" class="text-center">Login</a></li>
-        </ul>
+    <div class="navbar navbar-inverse" ng-controller="UserController">
+        <h2 class="text-center"><span class="text-default">{{'Welcome '}}</span><span class="text-default" ng-bind="username"></span></h2>
     </div>
 </header>
 <body>
     <ng-view></ng-view>
+
 <script src="scripts/app.js"></script>
 <script src="scripts/services/user-login.js"></script>
 <script src="scripts/controllers/user-controller.js"></script>

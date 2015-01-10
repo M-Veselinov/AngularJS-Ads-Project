@@ -1,4 +1,18 @@
-<div class="col-md-12" class="container-fluid">
+<aside class="col-md-2">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>Navigation</h3>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#/home" class="text-center">Home</a></li>
+                <li><a href="#/login" class="text-center">Login</a></li>
+                <li><a href="#/register" class="text-center">Register</a></li>
+            </ul>
+        </div>
+    </div>
+</aside>
+<div class="col-md-10" class="container-fluid">
     <form class="form-horizontal" ng-controller="UserController as userCtrl">
         <div class="col-md-12">
         <fieldset>
@@ -11,12 +25,12 @@
 
                 <label for="password" class="col-lg-2 control-label" >Password: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="password" placeholder="Password" type="text" ng-model="userCtrl.user.password">
+                    <input class="form-control" id="password" placeholder="Password" type="password" ng-model="userCtrl.user.password">
                 </div>
 
                 <label for="confirm-password" class="col-lg-2 control-label" >Confirm Password: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="confirm-password" placeholder="Confirm Password" type="text" ng-model="userCtrl.user.confirmPassword">
+                    <input class="form-control" id="confirm-password" placeholder="Confirm Password" type="password" ng-model="userCtrl.user.confirmPassword">
                 </div>
 
                 <label for="name" class="col-lg-2 control-label" >Name: </label>
@@ -33,15 +47,15 @@
                 <div class="col-lg-4">
                     <input class="form-control" id="phone" placeholder="Phone" type="text" ng-model="userCtrl.user.phone">
                 </div>
-                <div class="col-md-3">
-                <label for="select-town" class="col-lg-9 control-label">Select Town: </label>
+                <label for="select-town" class="col-lg-2 control-label">Select Town: </label>
+                <div class="col-lg-4">
                 <select class="form-control" id="select-town">
                     <option ng-repeat="town in towns">{{town.name}}</option>
                 </select>
                 </div>
                 <div class="col-lg-10 col-lg-offset-2">
                     <br>
-                    <button type="submit" class="btn btn-primary" ng-click="registerUser(userCtrl.user)">Submit</button>
+                    <a href="#/user-home" class="btn btn-primary" ng-click="registerUser(userCtrl.user)">Submit</a>
                 </div>
             </div>
         </fieldset>

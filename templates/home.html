@@ -1,19 +1,33 @@
-<div class="col-md-10" class="container-fluid" ng-controller="AdsController">
+<aside class="col-md-2">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>Navigation</h3>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#/home" class="text-center">Home</a></li>
+                <li><a href="#/login" class="text-center">Login</a></li>
+                <li><a href="#/register" class="text-center">Register</a></li>
+            </ul>
+        </div>
+    </div>
+</aside>
+<div class="col-md-8" class="container-fluid" ng-controller="AdsController">
     <div ng-repeat="ad in data.ads" class="panel panel-default">
         <div class="panel-heading">
             <h5>{{ad.title}}</h5>
         </div>
         <div class="panel-body">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <img ng-src="{{ad.imageDataUrl}}">
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9>
                 <span>Name: </span><span class="text-primary">{{ad.ownerName}}</span>
                 <span>Email: </span><span class="text-primary">{{ad.ownerEmail}}</span>
                 <span>Phone: </span><span class="text-primary">{{ad.ownerPhone}}</span>
             </div>
             <br>
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <p class="lead">{{ad.text}}</p>
             </div>
             <div class="blockquote-reverse">

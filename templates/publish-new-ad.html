@@ -3,50 +3,55 @@
         <div class="panel-heading">
             <h3>Navigation</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" ng-controller="AdsController">
             <ul class="nav nav-pills nav-stacked">
                 <li><a href="#/user-home" class="text-center">Home</a></li>
-                <li><a href="#" class="text-center">My Ads</a></li>
+                <li><a href="#/my-ads" class="text-center">My Ads</a></li>
                 <li><a href="#/publish-new-ad" class="text-center">Publish New Ad</a></li>
                 <li><a href="#" class="text-center">Edit Profile</a></li>
             </ul>
         </div>
     </div>
+    <div ng-controller="UserController as ctrl">
+        <a href="#/home" class="btn btn-primary" ng-click="ctrl.logoutUser()">Logout</a>
+    </div>
 </aside>
 <div class="col-md-10" class="container" >
-    <form class="form-horizontal" ng-controller="AdsController">
+    <form class="form-horizontal" ng-controller="AdsController as ctrl">
         <div class="col-md-12">
             <fieldset>
                 <legend>Publish New Ad</legend>
                 <div class="form-group">
                     <label for="title" class="col-lg-2 control-label" >Title: </label>
                     <div class="col-lg-4">
-                        <input type="text" class="form-control" id="title">
+                        <input type="text" class="form-control" id="title" ng-model="ctrl.ad.title">
                     </div>
 
                     <label for="text" class="col-lg-2 control-label" >Text: </label>
                     <div class="col-lg-4">
-                        <textarea type="text" class="form-control" id="text"></textarea>
+                        <textarea type="text" class="form-control" id="text" ng-model="ctrl.ad.text"></textarea>
                     </div>
 
                     <label for="image" class="col-lg-2 control-label" >Image: </label>
                     <div class="col-lg-4">
-                        <input type="text" class="form-control" id="image">
+                        <input type="file" class="form-control" id="image">
                     </div>
 
-                    <label for="category" class="col-lg-2 control-label" >Category: </label>
+                    <!-- <label for="category" class="col-lg-2 control-label" >Category: </label>
                     <div class="col-lg-4" ng-controller="CategoriesController">
-                        <select type="text" class="form-control" id="category">
+                        <select type="text" class="form-control" id="category" ng-model="selectedCategory">
                             <option ng-repeat="category in categories">{{category.name}}</option>
                         </select>
-                    </div>
+                    </div> -->
 
-                    <label for="town" class="col-lg-2 control-label" >Town: </label>
-                    <div class="col-lg-4" ng-controller="TownsController">
-                        <select type="text" class="form-control" id="town">
-                            <option ng-repeat="town in towns">{{town.name}}</option>
+                    <!-- <label for="town" class="col-lg-2 control-label" >Town: </label>
+                    <div class="col-lg-4" ng-controller="AdsController as ctrl">
+                        <select type="text" class="form-control" id="town" ng-model="selectedTown">
+                            <option ng-repeat="town in ctrl.towns3">{{town.name}}</option>
                         </select>
-                    </div>
+                    </div> -->
+
+                    <a href="#/user-home" ng-click="createNewAd(ctrl.ad)" class="btn btn-success">Create Ad</a>
                 </div>
             </fieldset>
         </div>
