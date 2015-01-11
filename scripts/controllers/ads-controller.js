@@ -9,9 +9,6 @@ app.controller('AdsController', function AdsController($scope, adsData) {
         function (error, status, headers, config) {
             console.log(status, error); // Try with invalid url
         });
-
-    var ad = JSON.stringify({ });
-
     $scope.createNewAd = function (ad) {
         adsData.createAd(ad,
             function (data, status, headers, config) {
@@ -80,4 +77,14 @@ app.controller('AdsController', function AdsController($scope, adsData) {
             });
     }
 
+    $scope.getAdsByCategory = function (category) {
+        adsData.getAdsCategory(category,
+            function (data, status, headers, config) {
+                requestSuccessfull('asdSda');
+                $scope.data = data;
+            },
+            function (error,status, headers, config) {
+                console.log(status,error);
+            });
+    }
 });

@@ -17,41 +17,41 @@
     </div>
 </aside>
 <div class="col-md-10" class="container" >
-    <form class="form-horizontal" ng-controller="AdsController as ctrl">
+    <form class="form-horizontal" ng-controller="AdsController">
         <div class="col-md-12">
             <fieldset>
                 <legend>Publish New Ad</legend>
                 <div class="form-group">
                     <label for="title" class="col-lg-2 control-label" >Title: </label>
                     <div class="col-lg-4">
-                        <input type="text" class="form-control" id="title" ng-model="ctrl.ad.title">
+                        <input type="text" class="form-control" id="title" ng-model="ad.title">
                     </div>
 
                     <label for="text" class="col-lg-2 control-label" >Text: </label>
                     <div class="col-lg-4">
-                        <textarea type="text" class="form-control" id="text" ng-model="ctrl.ad.text"></textarea>
+                        <textarea type="text" class="form-control" id="text" ng-model="ad.text"></textarea>
                     </div>
 
-                    <label for="image" class="col-lg-2 control-label" >Image: </label>
+                    <label for="fileInput" class="col-lg-2 control-label" >Image: </label>
                     <div class="col-lg-4">
-                        <input type="file" class="form-control" id="image">
+                        <input type="file" class="form-control" id="fileInput">
+                    </div>
+                    <div id="fileDisplayArea">
+
                     </div>
 
-                    <!-- <label for="category" class="col-lg-2 control-label" >Category: </label>
+                    <label for="category" class="col-lg-2 control-label" >Category: </label>
                     <div class="col-lg-4" ng-controller="CategoriesController">
-                        <select type="text" class="form-control" id="category" ng-model="selectedCategory">
-                            <option ng-repeat="category in categories">{{category.name}}</option>
+                        <select type="text" class="form-control" id="category" ng-options="category.id as category.name for category in categories" ng-model="ad.categoryId">
                         </select>
-                    </div> -->
+                    </div>
 
-                    <!-- <label for="town" class="col-lg-2 control-label" >Town: </label>
-                    <div class="col-lg-4" ng-controller="AdsController as ctrl">
-                        <select type="text" class="form-control" id="town" ng-model="selectedTown">
-                            <option ng-repeat="town in ctrl.towns3">{{town.name}}</option>
+                    <label for="town" class="col-lg-2 control-label" >Town: </label>
+                    <div class="col-lg-4" ng-controller="TownsController">
+                        <select type="text" class="form-control" id="town" ng-options="town.id as town.name for town in towns" ng-model="ad.townId">
                         </select>
-                    </div> -->
-
-                    <a href="#/user-home" ng-click="createNewAd(ctrl.ad)" class="btn btn-success">Create Ad</a>
+                    </div>
+                    <a href="#/user-home" ng-click="createNewAd(ad)" class="btn btn-success">Create Ad</a>
                 </div>
             </fieldset>
         </div>

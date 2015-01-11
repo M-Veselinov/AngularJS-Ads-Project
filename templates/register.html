@@ -13,49 +13,48 @@
     </div>
 </aside>
 <div class="col-md-10" class="container-fluid">
-    <form class="form-horizontal" ng-controller="UserController as userCtrl">
+    <form class="form-horizontal" ng-controller="UserController">
         <div class="col-md-12">
         <fieldset>
             <legend>User Registration</legend>
             <div class="form-group">
                 <label for="username" class="col-lg-2 control-label" >Username: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="username" placeholder="Username" type="text" ng-model="userCtrl.user.username">
+                    <input class="form-control" id="username" placeholder="Username" type="text" ng-model="user.username">
                 </div>
 
                 <label for="password" class="col-lg-2 control-label" >Password: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="password" placeholder="Password" type="password" ng-model="userCtrl.user.password">
+                    <input class="form-control" id="password" placeholder="Password" type="password" ng-model="user.password">
                 </div>
 
                 <label for="confirm-password" class="col-lg-2 control-label" >Confirm Password: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="confirm-password" placeholder="Confirm Password" type="password" ng-model="userCtrl.user.confirmPassword">
+                    <input class="form-control" id="confirm-password" placeholder="Confirm Password" type="password" ng-model="user.confirmPassword">
                 </div>
 
                 <label for="name" class="col-lg-2 control-label" >Name: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="name" placeholder="Name" type="text" ng-model="userCtrl.user.name">
+                    <input class="form-control" id="name" placeholder="Name" type="text" ng-model="user.name">
                 </div>
 
                 <label for="email" class="col-lg-2 control-label" >Email: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="email" placeholder="Email" type="text" ng-model="userCtrl.user.email">
+                    <input class="form-control" id="email" placeholder="Email" type="text" ng-model="user.email">
                 </div>
 
                 <label for="phone" class="col-lg-2 control-label" >Phone: </label>
                 <div class="col-lg-4">
-                    <input class="form-control" id="phone" placeholder="Phone" type="text" ng-model="userCtrl.user.phone">
+                    <input class="form-control" id="phone" placeholder="Phone" type="text" ng-model="user.phone">
                 </div>
                 <label for="select-town" class="col-lg-2 control-label">Select Town: </label>
-                <div class="col-lg-4">
-                <select class="form-control" id="select-town">
-                    <option ng-repeat="town in towns">{{town.name}}</option>
+                <div class="col-lg-4" ng-controller="TownsController">
+                <select class="form-control" id="select-town" ng-options="town.id as town.name for town in towns" ng-model="user.townId">
                 </select>
                 </div>
                 <div class="col-lg-10 col-lg-offset-2">
                     <br>
-                    <a href="#/user-home" class="btn btn-primary" ng-click="registerUser(userCtrl.user)">Submit</a>
+                    <a href="#/user-home" class="btn btn-primary" ng-click="registerUser(user)">Submit</a>
                 </div>
             </div>
         </fieldset>

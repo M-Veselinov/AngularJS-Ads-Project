@@ -21,7 +21,7 @@
             <div class="col-md-3">
                 <img ng-src="{{ad.imageDataUrl}}">
             </div>
-            <div class="col-md-9>
+            <div class="col-md-9">
                 <span>Name: </span><span class="text-primary">{{ad.ownerName}}</span>
                 <span>Email: </span><span class="text-primary">{{ad.ownerEmail}}</span>
                 <span>Phone: </span><span class="text-primary">{{ad.ownerPhone}}</span>
@@ -42,25 +42,21 @@
             <h4 class="text-center">Categories</h4>
         </div>
         <div class="panel-body" ng-controller="CategoriesController">
-            <select class="form-control">
-                <option>All</option>
-                <option ng-repeat="category in categories" ng-v>{{category.name}}</option>
+            <select class="form-control" ng-options="category.id as category.name for category in categories" ng-model="category">
             </select>
             <br>
-            <a href="#" class="btn btn-primary">Filter</a>
+            <a href="#/home" class="btn btn-primary" ng-click="getAdsByCategory(category.id)">Filter</a>
         </div>
     </div>
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4 class="text-center">Towns</h4>
         </div>
-        <div class="panel-body">
-            <select class="form-control" ng-controller="TownsController">
-                <option>All</option>
-                <option ng-repeat="town in towns">{{town.name}}</option>
+        <div class="panel-body" ng-controller="TownsController">
+            <select class="form-control">
             </select>
             <br>
-            <a href="#" class="btn btn-primary">Filter</a>
+            <a href="#/home" class="btn btn-primary">Filter</a>
         </div>
     </div>
 </aside>

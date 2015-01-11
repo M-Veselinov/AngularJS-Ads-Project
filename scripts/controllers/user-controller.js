@@ -3,9 +3,6 @@
  */
 
 app.controller('UserController', function ($scope, userRegister) {
-    var user = JSON.stringify({
-    });
-
     $scope.registerUser = function (user) {
         userRegister.userRegistration(user,
         function (data, status, header, config) {
