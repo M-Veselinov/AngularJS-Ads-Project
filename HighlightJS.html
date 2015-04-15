@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/zenburn.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+    <script src="handlebars-v3.0.1.js"></script>
+    <script src="underscore.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+
+    </div>
+    <script id="entry-template" type="text/x-handlebars-template">
+        <div class="entry">
+            <ul>
+                {{#each this}}
+                    <li class="changed">
+                        {{this.name}}
+                        <ul>
+                            <li class="changed">dsadasdasd</li>
+                        </ul>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </script>
+    <script>
+        var obj = {
+            user: {
+                username: 'Mario',
+                password: '123456',
+                age: 21
+            },
+            other: {
+                stuff: 'asda',
+                number: 12345
+            }
+        };
+        var keys = _.keys(obj);
+        var arr = [];
+
+        _.each(keys, function (key) {
+            obj[key].name = key;
+            arr.push(obj[key]);
+        });
+
+        var source = $('#entry-template').html();
+        var template = Handlebars.compile(source);
+        var context = arr;
+        var html = template(context);
+
+
+
+        hljs.configure({useBR: true});
+
+        $(document).ready(function() {
+            $('#wrapper').append(html);
+            $('.changed').each(function(i, block) {
+                console.log(i);
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+</body>
+</html>
